@@ -51,10 +51,28 @@ Open the apache config:
 
 ...and add the following:
 
+    # add this line with the other load module directives
     LoadModule php5_module        libexec/apache2/libphp5.2.so
+
+    # add this at the end of the file
+    Include /Users/hugowett/Projects/apache.conf
+
+Create the apache.conf file with the following contents
+
+    
+    # get the server name from the Host: header
+    UseCanonicalName Off
+
+    # include the server name in the filenames used to satisfy requests
+    VirtualDocumentRoot /Users/hugowett/Projects/%0/public_html
+    <Directory "/Users/hugowett/Projects">
+      AllowOverride All
+      Order allow,deny
+      Allow from all
+    </Directory>
 
 ...and restart.
 
     $ sudo apachectl graceful
 
-Now you should have a working XAMP stack.
+Now you should have a working XAMP stack. Just add a "domain.local" directory to ~/Projects with a public_html dir inside and add the domain using `$ ghost add domain.local` and it will be available as a local site.
