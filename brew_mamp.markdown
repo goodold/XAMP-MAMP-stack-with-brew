@@ -1,4 +1,4 @@
-*For Brew driven MAMP with Apache2, PHP 5.3 and MySQL 5.1*
+**For Brew driven MAMP with Apache2, PHP 5.3 and MySQL 5.1**
 
 _If you've MacPorts install - you probably should move it to avoid any unintentional conflicts._
 
