@@ -48,6 +48,7 @@ Open the apache config:
     # include the server name in the filenames used to satisfy requests
     VirtualDocumentRoot /Users/hugowett/Projects/%0/public_html
     <Directory "/Users/hugowett/Projects">
+      Options FollowSymLinks
       AllowOverride All
       Order allow,deny
       Allow from all
