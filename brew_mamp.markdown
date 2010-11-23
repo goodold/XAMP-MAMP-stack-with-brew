@@ -62,7 +62,7 @@ Open the apache config:
 
     # LoadModule bonjour_module     libexec/apache2/mod_bonjour.so
 
-...if you're running Mac OS X 10.6.5 you need to fix your broken apachectl file, open it
+If you're running Mac OS X 10.6.5 you need to fix your broken apachectl file, open it
 
     $ mate /usr/sbin/apachectl
 
