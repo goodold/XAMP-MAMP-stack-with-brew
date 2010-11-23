@@ -1,6 +1,6 @@
 **For Brew driven MAMP with Apache2, PHP 5.3 and MySQL 5.1**
 
-_If you've MacPorts install - you probably should move it to avoid any unintentional conflicts._
+_If you have MacPorts install - you probably should move it to avoid any unintentional conflicts._
 
 Install brew (assuming that you have Xcode installed).
 
@@ -11,7 +11,7 @@ Install git, bash completion and ghost.
 
     $ brew install git
     $ brew install bash-completion
-    $ gem install ghost
+    $ sudo gem install ghost
 
 Get the Good Old bin package and add it to your profile:
 
@@ -61,6 +61,18 @@ Open the apache config:
 ...and maybe comment out the following
 
     # LoadModule bonjour_module     libexec/apache2/mod_bonjour.so
+
+...if you're running Mac OS X 10.6.5 you need to fix your broken apachectl file, open it
+
+    $ mate /usr/sbin/apachectl
+
+...and find and replace
+
+   ULIMIT_MAX_FILES="ulimit -S -n `ulimit -H -n`"
+
+...with
+
+   ULIMIT_MAX_FILES=""
 
 ...and restart.
 
