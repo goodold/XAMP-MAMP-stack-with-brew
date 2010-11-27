@@ -4,7 +4,7 @@ _If you have MacPorts install - you probably should move it to avoid any uninten
 
 Install brew (assuming that you have Xcode installed).
 
-    $ ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)"
+    $ ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
 
 Install git, bash completion and ghost.
 (Perhaps by first following gem instructions at http://wiki.github.com/mxcl/homebrew/gems-eggs-and-perl-modules)
