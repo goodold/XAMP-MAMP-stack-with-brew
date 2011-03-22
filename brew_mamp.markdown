@@ -68,11 +68,11 @@ If you're running Mac OS X 10.6.5 you need to fix your broken apachectl file, op
 
 ...and find and replace
 
-   ULIMIT_MAX_FILES="ulimit -S -n `ulimit -H -n`"
+    ULIMIT_MAX_FILES="ulimit -S -n `ulimit -H -n`"
 
 ...with
 
-   ULIMIT_MAX_FILES=""
+    ULIMIT_MAX_FILES=""
 
 ...and restart.
 
