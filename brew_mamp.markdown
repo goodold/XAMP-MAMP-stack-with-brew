@@ -1,3 +1,5 @@
+# XAMP/MAMP stack with brew
+
 **For Brew driven MAMP with Apache2, PHP 5.3 and MySQL 5.1**
 
 _If you have MacPorts install - you probably should move it to avoid any unintentional conflicts._
