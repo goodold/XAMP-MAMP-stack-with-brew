@@ -2,13 +2,32 @@ Install brew (assuming that you have Xcode installed).
 
     $ ruby -e "$(curl -fsS http://gist.github.com/raw/436471/install_homebrew.rb)"
 
-Install git, bash completion and ghost.
+Install git and bash completion.
 
     $ brew install git
     $ brew install bash-completion
-    $ gem install ghost
 
-Get the Good Old bin package and add it to your profile:
+Install dnsmasq for local wildcard domain.
+
+    $ brew install dnsmasq
+    $ cp /usr/local/Cellar/dnsmasq/*/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
+    $ sudo cp /usr/local/Cellar/dnsmasq/2.57/uk.org.thekelleys.dnsmasq.plist /Library/LaunchDaemons
+    $ sudo launchctl load -w /Library/LaunchDaemons/uk.org.thekelleys.dnsmasq.plist
+
+Edit your dnsmasq.conf and add an entry for your local development domain. At Good Old we generally use the develpers first name or nick as top level domain. That way we can check out each others work without having to change the IP for *.dev or a similarly generic domain. For me that would be:
+
+    address=/.hugo/127.0.0.1
+
+You can also add your colleagues like this:
+
+    address=/.simme/192.168.4.123
+
+Restart dnsmasq to let the configuration changes take effect.
+
+    $ sudo launchctl stop uk.org.thekelleys.dnsmasq
+    $ sudo launchctl start uk.org.thekelleys.dnsmasq
+
+This is an optional step: get the Good Old bin package and add it to your profile:
 
     $ mkdir ~/bin
     $ cd ~/bin
@@ -75,4 +94,4 @@ Create the apache.conf file with the following contents
 
     $ sudo apachectl graceful
 
-Now you should have a working XAMP stack. Just add a "domain.local" directory to ~/Projects with a public_html dir inside and add the domain using `$ ghost add domain.local` and it will be available as a local site.
+Now you should have a working XAMP stack. Just add a "domain.hugo" directory to ~/Projects with a public_html dir inside and it will be available as a local site.
