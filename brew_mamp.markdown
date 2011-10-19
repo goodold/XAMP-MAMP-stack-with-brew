@@ -1,6 +1,10 @@
+**For Brew driven MAMP with Apache2, PHP 5.3 and MySQL 5.1**
+
+_If you have MacPorts install - you probably should move it to avoid any unintentional conflicts._
+
 Install brew (assuming that you have Xcode installed).
 
-    $ ruby -e "$(curl -fsS http://gist.github.com/raw/436471/install_homebrew.rb)"
+    $ ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
 
 Install git and bash completion.
 
@@ -32,58 +36,42 @@ This is an optional step: get the Good Old bin package and add it to your profil
     $ mkdir ~/bin
     $ cd ~/bin
     $ git clone http://github.com/goodold/goodold-bin.git
-    $ echo "source \$HOME/bin/goodold-bin/goodold_profile" >> .bash_profile
+    $ echo "source \$HOME/bin/goodold-bin/goodold_profile" >> ~.bash_profile
 
 ...or, if you already have it, run a update:
 
-    $ goodold-selfupdate
+    $ ~/bin/goodold-bin/goodold-selfupdate
 
 Start a new shell or reload your profile to get the correct paths:
 
     $ source .bash_profile
 
-If you have to use PHP 5.2 you need to turn your homebrew dir into a git working directory.
-
-    $ cd /usr/local
-    $ git init
-    $ git remote add origin git://github.com/mxcl/homebrew.git
-    $ git pull origin master
-
-Get the necessary recipes for php52:
-
-    $ git remote add boztek git://github.com/boztek/homebrew.git && git fetch boztek
-    $ git checkout boztek/php52 && git checkout -b working
-    $ git pull --rebase origin master
-
 Install mysql and follow the instructions:
 
     $ brew install mysql
-
-Install php:
-
-    $ brew install php52 --with-mysql --with-apache
-    $ sudo ln -s /usr/local/Cellar/php52/5.2.13/libexec/apache2/libphp5.so /usr/libexec/apache2/libphp5.2.so
 
 Open the apache config:
 
     $ mate /etc/apache2/httpd.conf
 
-...and add the following:
+...uncomment the following
 
-    # add this line with the other load module directives
-    LoadModule php5_module        libexec/apache2/libphp5.2.so
+    LoadModule php5_module        libexec/apache2/libphp5.so
+
+...and add the following:
 
     # add this at the end of the file
     Include /Users/hugowett/Projects/apache.conf
 
 Create the apache.conf file with the following contents
-    
+
     # get the server name from the Host: header
     UseCanonicalName Off
 
     # include the server name in the filenames used to satisfy requests
     VirtualDocumentRoot /Users/hugowett/Projects/%0/public_html
     <Directory "/Users/hugowett/Projects">
+      Options FollowSymLinks
       AllowOverride All
       Order allow,deny
       Allow from all
