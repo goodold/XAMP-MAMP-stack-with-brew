@@ -31,21 +31,6 @@ Restart dnsmasq to let the configuration changes take effect.
     $ sudo launchctl stop uk.org.thekelleys.dnsmasq
     $ sudo launchctl start uk.org.thekelleys.dnsmasq
 
-This is an optional step: get the Good Old bin package and add it to your profile:
-
-    $ mkdir ~/bin
-    $ cd ~/bin
-    $ git clone http://github.com/goodold/goodold-bin.git
-    $ echo "source \$HOME/bin/goodold-bin/goodold_profile" >> ~.bash_profile
-
-...or, if you already have it, run a update:
-
-    $ ~/bin/goodold-bin/goodold-selfupdate
-
-Start a new shell or reload your profile to get the correct paths:
-
-    $ source .bash_profile
-
 Install mysql and follow the instructions:
 
     $ brew install mysql
@@ -82,3 +67,18 @@ Create the apache.conf file with the following contents
     $ sudo apachectl graceful
 
 Now you should have a working XAMP stack. Just add a "domain.hugo" directory to ~/Projects with a public_html dir inside and it will be available as a local site.
+
+This is an optional step: get the Good Old bin package and add it to your profile:
+
+    $ mkdir ~/bin
+    $ cd ~/bin
+    $ git clone http://github.com/goodold/goodold-bin.git
+    $ echo "source \$HOME/bin/goodold-bin/goodold_profile" >> ~/.bash_profile
+
+...or, if you already have it, run a update:
+
+    $ ~/bin/goodold-bin/goodold-selfupdate
+
+Start a new shell or reload your profile to get the correct paths:
+
+    $ source .bash_profile
