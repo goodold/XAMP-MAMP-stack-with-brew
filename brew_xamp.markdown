@@ -42,22 +42,22 @@ Start a new shell or reload your profile to get the correct paths:
 
     $ source .bash_profile
 
-Turn your homebrew dir into a git working directory:
+If you have to use PHP 5.2 you need to turn your homebrew dir into a git working directory.
 
     $ cd /usr/local
     $ git init
     $ git remote add origin git://github.com/mxcl/homebrew.git
     $ git pull origin master
 
-Install mysql and follow the instructions:
-
-    $ brew install mysql
-
 Get the necessary recipes for php52:
 
     $ git remote add boztek git://github.com/boztek/homebrew.git && git fetch boztek
     $ git checkout boztek/php52 && git checkout -b working
     $ git pull --rebase origin master
+
+Install mysql and follow the instructions:
+
+    $ brew install mysql
 
 Install php:
 
@@ -77,7 +77,6 @@ Open the apache config:
     Include /Users/hugowett/Projects/apache.conf
 
 Create the apache.conf file with the following contents
-
     
     # get the server name from the Host: header
     UseCanonicalName Off
