@@ -70,6 +70,8 @@ Create the apache.conf file with the following contents
 
 Now you should have a working XAMP stack. Just add a "domain.hugo" directory to ~/Projects with a public_html dir inside and it will be available as a local site.
 
+## Installing Good Old Bin
+
 This is an optional step: get the Good Old bin package and add it to your profile:
 
     $ mkdir ~/bin
