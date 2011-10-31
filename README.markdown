@@ -70,6 +70,67 @@ Create the apache.conf file with the following contents
 
 Now you should have a working XAMP stack. Just add a "domain.hugo" directory to ~/Projects with a public_html dir inside and it will be available as a local site.
 
+## Configuring xhprof
+
+### 1. Download and install latest version:
+
+```bash
+cd ~/Projects
+git clone https://github.com/facebook/xhprof.git xhprof.local xhprof.local
+cd xhprof.local/extension
+phpize
+CFLAGS="-arch x86_64 -arch i386"
+./configure
+make
+sudo make install
+```
+
+There is an issue with timers, see https://github.com/facebook/xhprof/commit/b7b4ad7d1b72803fa8235e988d6cbf93d80ed59d#L2R276
+You can confirm this by running:
+
+```bash
+make test
+```
+
+Make the web interface available by aliasing it to public_html:
+
+````bash
+cd ..
+ln -s xhprof_html public_html
+```
+
+### 2. Now add the xhprof extension to /etc/php.ini:
+
+```ini
+[xhprof]
+extension=xhprof.so
+xhprof.output_dir=/private/tmp
+```
+
+### 3. Restart Apache and double-check that the xhprof extension is properly loading -
+```bash
+sudo apachectl restart
+php -m | grep xhprof
+```
+
+### 4. Add this to devel settings (replace USER with your username):
+
+xhprof directory:
+
+    /Users/USER/Projects/xhprof.local
+
+XHProf URL:
+
+    http://xhprof.local
+
+### 5. To be able to generate callgraphs:
+
+```bash
+brew install graphviz
+```
+
+See http://xhprof.local/docs for documentation on using XHProf
+
 ## Installing Good Old Bin
 
 This is an optional step: get the Good Old bin package and add it to your profile:
