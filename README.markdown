@@ -76,8 +76,8 @@ Now you should have a working XAMP stack. Just add a "domain.hugo" directory to 
 
 ```bash
 cd ~/Projects
-git clone https://github.com/facebook/xhprof.git xhprof.local xhprof.local
-cd xhprof.local/extension
+git clone https://github.com/facebook/xhprof.git xhprof.hugo
+cd xhprof.hugo/extension
 phpize
 CFLAGS="-arch x86_64 -arch i386"
 ./configure
@@ -117,11 +117,11 @@ php -m | grep xhprof
 
 xhprof directory:
 
-    /Users/USER/Projects/xhprof.local
+    /Users/USER/Projects/xhprof.hugo/
 
 XHProf URL:
 
-    http://xhprof.local
+    http://xhprof.hugo
 
 ### 5. To be able to generate callgraphs:
 
@@ -129,7 +129,7 @@ XHProf URL:
 brew install graphviz
 ```
 
-See http://xhprof.local/docs for documentation on using XHProf
+See http://xhprof.hugo/docs for documentation on using XHProf
 
 ## Installing Good Old Bin
 
